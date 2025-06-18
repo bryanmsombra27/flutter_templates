@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:templates/models/menu.dart';
+import "package:templates/widgets/custom_card.dart";
 
 void main() {
   runApp(const MyApp());
@@ -47,70 +48,13 @@ class _home extends StatelessWidget {
       child: Column(
         spacing: 12,
         children: [
-          _Card(color: Colors.red.shade100, icon: Icons.auto_graph_rounded),
+          CustomCard(
+            color: Colors.red.shade100,
+            cardColor: Colors.red.shade200,
+            iconColor: Colors.red,
+            icon: Icons.auto_graph_rounded,
+          ),
         ],
-      ),
-    );
-  }
-}
-
-class _Card extends StatelessWidget {
-  final Color color;
-  final IconData icon;
-  const _Card({super.key, required this.color, required this.icon});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(10),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: color,
-      ),
-
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          color: Colors.red.shade200,
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  padding: EdgeInsets.all(10),
-                  margin: EdgeInsets.only(left: 10),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.red,
-                  ),
-
-                  child: Icon(icon, size: 20, color: Colors.white),
-                ),
-                Flexible(
-                  child: ListTile(
-                    title: Text("Ventas del dia"),
-                    subtitle: Text("\$0.00"),
-                  ),
-                ),
-
-                Container(
-                  margin: EdgeInsets.only(right: 10),
-                  padding: EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    color: Colors.white,
-                  ),
-                  child: Icon(Icons.check),
-                ),
-              ],
-            ),
-            Text("Generar reporte Ventas"),
-          ],
-        ),
       ),
     );
   }
