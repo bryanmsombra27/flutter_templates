@@ -90,11 +90,21 @@ class _Card extends StatelessWidget {
 
                   child: Icon(icon, size: 20, color: Colors.white),
                 ),
-                Expanded(
+                Flexible(
                   child: ListTile(
                     title: Text("Ventas del dia"),
                     subtitle: Text("\$0.00"),
                   ),
+                ),
+
+                Container(
+                  margin: EdgeInsets.only(right: 10),
+                  padding: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    color: Colors.white,
+                  ),
+                  child: Icon(Icons.check),
                 ),
               ],
             ),
