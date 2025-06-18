@@ -5,12 +5,22 @@ class CustomCard extends StatelessWidget {
   final Color cardColor;
   final Color iconColor;
   final IconData icon;
+
+  final String label;
+  final String price;
+  final IconData secondIcon;
+  final String buttonLabel;
+
   const CustomCard({
     super.key,
     required this.color,
     required this.icon,
     required this.cardColor,
     required this.iconColor,
+    required this.label,
+    required this.price,
+    required this.secondIcon,
+    required this.buttonLabel,
   });
 
   @override
@@ -53,7 +63,7 @@ class CustomCard extends StatelessWidget {
                       Flexible(
                         child: ListTile(
                           title: Text(
-                            "Ventas del dia",
+                            label,
                             textAlign: TextAlign.end,
                             style: TextStyle(
                               color: Colors.white,
@@ -62,7 +72,7 @@ class CustomCard extends StatelessWidget {
                             ),
                           ),
                           subtitle: Text(
-                            "\$0.00",
+                            price,
                             textAlign: TextAlign.end,
                             style: TextStyle(
                               color: Colors.white,
@@ -87,13 +97,13 @@ class CustomCard extends StatelessWidget {
                         ),
                       ),
                       padding: EdgeInsets.symmetric(
-                        horizontal: 44,
+                        // horizontal: 44,
                         vertical: 16,
-                        // horizontal: 45,
+                        horizontal: 60,
                       ),
                     ),
                     onPressed: () {},
-                    child: Text("Generar reporte Ventas"),
+                    child: Text(buttonLabel, textAlign: TextAlign.center),
                   ),
                   // Text(
                   //   "Generar reporte Ventas",
@@ -117,7 +127,7 @@ class CustomCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(12),
               color: Colors.white,
             ),
-            child: Icon(Icons.check),
+            child: Icon(secondIcon),
           ),
         ],
       ),

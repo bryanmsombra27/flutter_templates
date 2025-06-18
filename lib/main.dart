@@ -45,16 +45,52 @@ class _home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16),
-      child: Column(
-        spacing: 12,
-        children: [
-          CustomCard(
-            color: Colors.red.shade100,
-            cardColor: Colors.red.shade200,
-            iconColor: Colors.red,
-            icon: Icons.auto_graph_rounded,
-          ),
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          spacing: 12,
+          children: [
+            CustomCard(
+              color: Colors.red.shade100,
+              cardColor: Colors.red.shade200,
+              iconColor: Colors.red,
+              icon: Icons.auto_graph_rounded,
+              label: "Ventas del dia",
+              buttonLabel: "Generar reporte Ventas",
+              price: "\$0.00",
+              secondIcon: Icons.check,
+            ),
+            CustomCard(
+              color: Colors.yellow.shade100,
+              cardColor: Colors.yellow.shade700,
+              iconColor: Colors.yellow.shade500,
+              icon: Icons.account_balance_outlined,
+              label: "Reparaciones del dia",
+              buttonLabel: "Generar reporte Reparaciones",
+              price: "\$0.00",
+              secondIcon: Icons.check,
+            ),
+            CustomCard(
+              color: Colors.blue.shade100,
+              cardColor: Colors.blue.shade700,
+              iconColor: Colors.blue.shade500,
+              icon: Icons.shopping_cart,
+              label: "Compras del dia",
+              buttonLabel: "Generar reporte Compras",
+              price: "\$0.00",
+              secondIcon: Icons.check_circle_outline,
+            ),
+            CustomCard(
+              color: Colors.green.shade100,
+              cardColor: Colors.green.shade700,
+              iconColor: Colors.green.shade500,
+              icon: Icons.table_chart_rounded,
+              label: "Total del dia",
+              buttonLabel: "Generar reporte Caja",
+              price: "\$0.00",
+              secondIcon: Icons.check_circle_outline,
+            ),
+          ],
+        ),
       ),
     );
   }
