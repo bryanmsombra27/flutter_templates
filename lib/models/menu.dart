@@ -3,13 +3,14 @@ import 'package:flutter/material.dart';
 class Menu {
   final String title;
   final IconData icon;
+  final String route;
 
-  Menu({required this.title, required this.icon});
+  Menu({required this.title, required this.icon, this.route = "/"});
 }
 
 final List<Menu> menuItems = [
   Menu(title: "Inicio", icon: Icons.home),
-  Menu(title: "Ordenes de trabajo", icon: Icons.work_history),
+  Menu(title: "Ordenes de trabajo", icon: Icons.work_history, route: "/orders"),
   Menu(title: "Ventas", icon: Icons.monetization_on),
   Menu(title: "Inventario", icon: Icons.edit_document),
   Menu(title: "Ingresos", icon: Icons.attach_money_outlined),

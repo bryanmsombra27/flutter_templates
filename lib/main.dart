@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:templates/models/menu.dart';
 import "package:templates/widgets/custom_card.dart";
+import 'package:templates/widgets/order_status.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  bool isHome = true;
 
   // This widget is the root of your application.
   @override
@@ -18,6 +26,16 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
       home: Scaffold(
+        bottomNavigationBar: BottomNavigationBar(
+          items: [
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: "home"),
+            BottomNavigationBarItem(icon: Icon(Icons.list), label: "orders"),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.shopping_cart),
+              label: "sales",
+            ),
+          ],
+        ),
         drawer: Drawer(
           child: ListView.builder(
             itemCount: menuItems.length,
@@ -27,12 +45,45 @@ class MyApp extends StatelessWidget {
               return ListTile(
                 leading: Icon(item.icon),
                 title: Text(item.title),
+                onTap: () {
+                  if (item.route == "/orders") {
+                    setState(() {
+                      isHome = false;
+                    });
+                  } else {
+                    setState(() {
+                      isHome = true;
+                    });
+                  }
+
+                  Navigator.of(context).pop();
+                },
               );
             },
           ),
         ),
-        appBar: AppBar(title: Text("Shadow Orderfix")),
-        body: _home(),
+        appBar: AppBar(
+          title: Text("Shadow Orderfix"),
+          actions: [
+            Padding(
+              padding: const EdgeInsets.only(top: 10, right: 1),
+              child: Row(
+                spacing: 10,
+                children: [
+                  Icon(Icons.search),
+                  Icon(Icons.calculate),
+
+                  CircleAvatar(
+                    radius: 20,
+                    backgroundColor: Colors.amberAccent,
+                    child: Icon(Icons.person),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+        body: isHome ? _home() : OrderStatus(),
       ),
     );
   }
