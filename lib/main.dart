@@ -38,15 +38,26 @@ class _NavigationBottomBar extends StatelessWidget {
         children: [
           Icon(Icons.home),
           Icon(Icons.favorite),
-          Container(
-            padding: EdgeInsets.all(15),
-            decoration: BoxDecoration(
-              color: Colors.orangeAccent,
-              borderRadius: BorderRadius.circular(100),
-            ),
-            alignment: Alignment.center,
+          GestureDetector(
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (ctx) {
+                    return CartScreen();
+                  },
+                ),
+              );
+            },
+            child: Container(
+              padding: EdgeInsets.all(15),
+              decoration: BoxDecoration(
+                color: Colors.orangeAccent,
+                borderRadius: BorderRadius.circular(100),
+              ),
+              alignment: Alignment.center,
 
-            child: Center(child: Icon(Icons.shopping_cart)),
+              child: Center(child: Icon(Icons.shopping_cart)),
+            ),
           ),
           Icon(Icons.bookmark),
           Icon(Icons.menu),
