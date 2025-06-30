@@ -20,26 +20,39 @@ class _CustomCarrouselState extends State<CustomCarrousel> {
 
   @override
   Widget build(BuildContext context) {
-    final double width = MediaQuery.sizeOf(context).width;
+    final double height = MediaQuery.sizeOf(context).height;
 
     return Container(
       margin: EdgeInsets.only(top: 30),
-      height: width * 7 / 8,
-      child: CarouselView.weighted(
-        // shrinkExtent: 2,
-        enableSplash: true,
-        flexWeights: [1, 18, 2],
+      child: ConstrainedBox(
+        constraints: BoxConstraints(maxHeight: height / 2),
 
-        controller: carouselController,
-        children: [
-          ClipRect(child: Image.asset(fit: BoxFit.cover, "assets/cancha.png")),
-          ClipRect(child: Image.asset(fit: BoxFit.cover, "assets/hero.png")),
-          ClipRect(child: Image.asset(fit: BoxFit.cover, "assets/logo.png")),
-          ClipRect(child: Image.asset(fit: BoxFit.cover, "assets/cancha.png")),
-          ClipRect(child: Image.asset(fit: BoxFit.cover, "assets/cancha.png")),
-          ClipRect(child: Image.asset(fit: BoxFit.cover, "assets/cancha.png")),
-          ClipRect(child: Image.asset(fit: BoxFit.cover, "assets/cancha.png")),
-        ],
+        child: CarouselView.weighted(
+          // shrinkExtent: 2,
+          enableSplash: true,
+          flexWeights: [1, 18, 2],
+
+          controller: carouselController,
+          children: [
+            ClipRect(
+              child: Image.asset(fit: BoxFit.cover, "assets/cancha.png"),
+            ),
+            ClipRect(child: Image.asset(fit: BoxFit.cover, "assets/hero.png")),
+            ClipRect(child: Image.asset(fit: BoxFit.cover, "assets/logo.png")),
+            ClipRect(
+              child: Image.asset(fit: BoxFit.cover, "assets/cancha.png"),
+            ),
+            ClipRect(
+              child: Image.asset(fit: BoxFit.cover, "assets/cancha.png"),
+            ),
+            ClipRect(
+              child: Image.asset(fit: BoxFit.cover, "assets/cancha.png"),
+            ),
+            ClipRect(
+              child: Image.asset(fit: BoxFit.cover, "assets/cancha.png"),
+            ),
+          ],
+        ),
       ),
     );
   }
