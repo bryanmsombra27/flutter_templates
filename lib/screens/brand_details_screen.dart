@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:templates/screens/cart_detail_screen.dart';
 
 class BrandDetailsScreen extends StatelessWidget {
   const BrandDetailsScreen({super.key});
@@ -153,6 +154,21 @@ class _DetailCardItem extends StatelessWidget {
 
   final double width;
 
+  _showModal(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+      builder: (context) {
+        return Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: CartDetailScreen(),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -219,7 +235,13 @@ class _DetailCardItem extends StatelessWidget {
 
           Column(
             spacing: 20,
-            children: [Icon(Icons.favorite), Icon(Icons.add)],
+            children: [
+              Icon(Icons.favorite),
+              GestureDetector(
+                onTap: () => {_showModal(context)},
+                child: Icon(Icons.add),
+              ),
+            ],
           ),
         ],
       ),
