@@ -60,7 +60,18 @@ class _NavigationBottomBar extends StatelessWidget {
             ),
           ),
           Icon(Icons.bookmark),
-          Icon(Icons.menu),
+          GestureDetector(
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (ctx) {
+                    return BrandsScreen();
+                  },
+                ),
+              );
+            },
+            child: Icon(Icons.menu),
+          ),
         ],
       ),
     );
