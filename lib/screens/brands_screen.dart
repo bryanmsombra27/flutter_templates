@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:templates/screens/brand_details_screen.dart';
 
 class BrandsScreen extends StatelessWidget {
   const BrandsScreen({super.key});
@@ -83,40 +84,51 @@ class _BrandItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      spacing: 15,
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Image.asset("assets/logo.png", width: 100),
-        Flexible(
-          flex: 2,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text("MC Donald's"),
-              Text("near by me"),
-              Row(
-                children: [
-                  RatingBar(
-                    itemSize: 20,
-                    itemCount: 5,
-                    initialRating: 2,
-                    onRatingUpdate: (rating) {},
-                    direction: Axis.horizontal,
-                    ratingWidget: RatingWidget(
-                      full: Icon(Icons.star, color: colors.primary),
-                      half: Icon(Icons.star_half),
-                      empty: Icon(Icons.star_border),
-                    ),
-                  ),
-                  Text("(200)"),
-                ],
-              ),
-            ],
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (_) {
+              return BrandDetailsScreen();
+            },
           ),
-        ),
-        Icon(Icons.favorite),
-      ],
+        );
+      },
+      child: Row(
+        spacing: 15,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Image.asset("assets/logo.png", width: 100),
+          Flexible(
+            flex: 2,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("MC Donald's"),
+                Text("near by me"),
+                Row(
+                  children: [
+                    RatingBar(
+                      itemSize: 20,
+                      itemCount: 5,
+                      initialRating: 2,
+                      onRatingUpdate: (rating) {},
+                      direction: Axis.horizontal,
+                      ratingWidget: RatingWidget(
+                        full: Icon(Icons.star, color: colors.primary),
+                        half: Icon(Icons.star_half),
+                        empty: Icon(Icons.star_border),
+                      ),
+                    ),
+                    Text("(200)"),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          Icon(Icons.favorite),
+        ],
+      ),
     );
   }
 }
