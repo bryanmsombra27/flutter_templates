@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:templates/screens/index.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -11,6 +12,7 @@ class HomeScreen extends StatelessWidget {
     final colors = Theme.of(context).colorScheme;
 
     return Scaffold(
+      backgroundColor: Color.fromARGB(255, 204, 205, 211),
       body: Container(
         padding: EdgeInsets.all(10),
         child: Column(
@@ -71,9 +73,20 @@ class HomeScreen extends StatelessWidget {
                   "¿Ya tienes una cuenta?",
                   style: TextStyle(fontSize: 16, color: Colors.grey[600]),
                 ),
-                Text(
-                  "Inicia Sesion",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) {
+                          return SigninScreen();
+                        },
+                      ),
+                    );
+                  },
+                  child: Text(
+                    "Inicia Sesion",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                  ),
                 ),
               ],
             ),
