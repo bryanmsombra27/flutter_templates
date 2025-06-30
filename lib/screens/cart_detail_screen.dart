@@ -70,19 +70,19 @@ class CartDetailScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text("Cantidad"),
-              IconButton(onPressed: () {}, icon: Icon(Icons.minimize)),
+              IconButton(onPressed: () {}, icon: Icon(Icons.remove_circle)),
               Text("2"),
-              IconButton(onPressed: () {}, icon: Icon(Icons.add)),
+              IconButton(onPressed: () {}, icon: Icon(Icons.add_circle)),
             ],
           ),
           Text("Extras"),
           Row(
             spacing: 12,
             children: [
-              _extraIngredient(colors: colors),
-              _extraIngredient(colors: colors),
-              _extraIngredient(colors: colors),
-              _extraIngredient(colors: colors),
+              _extraIngredient(colors: colors, isSelected: true),
+              _extraIngredient(colors: colors, isSelected: false),
+              _extraIngredient(colors: colors, isSelected: false),
+              _extraIngredient(colors: colors, isSelected: true),
             ],
           ),
 
@@ -119,7 +119,13 @@ class CartDetailScreen extends StatelessWidget {
 }
 
 class _extraIngredient extends StatelessWidget {
-  const _extraIngredient({super.key, required this.colors});
+  final bool isSelected;
+
+  const _extraIngredient({
+    super.key,
+    required this.colors,
+    required this.isSelected,
+  });
 
   final ColorScheme colors;
 
@@ -127,11 +133,22 @@ class _extraIngredient extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: colors.primary,
+        color: isSelected ? colors.primary : null,
         borderRadius: BorderRadius.circular(5),
       ),
       padding: EdgeInsets.all(10),
-      child: Column(children: [Text("Cebolla"), Text("\$5.22")]),
+      child: Column(
+        children: [
+          Text(
+            "Cebolla",
+            style: TextStyle(color: isSelected ? Colors.white : Colors.black),
+          ),
+          Text(
+            "\$5.22",
+            style: TextStyle(color: isSelected ? Colors.white : Colors.black),
+          ),
+        ],
+      ),
     );
   }
 }
