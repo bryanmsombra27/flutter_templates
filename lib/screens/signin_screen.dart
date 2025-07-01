@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:templates/screens/verification_screen.dart';
 
 class SigninScreen extends StatelessWidget {
   const SigninScreen({super.key});
@@ -61,9 +62,19 @@ class SigninScreen extends StatelessWidget {
                         backgroundColor: colors.primary,
                         textStyle: TextStyle(color: Colors.white),
                       ),
-                      child: Text(
-                        "Continuar",
-                        style: TextStyle(color: Colors.white),
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => VerificationScreen(),
+                            ),
+                          );
+                        },
+                        child: Text(
+                          "Continuar",
+                          style: TextStyle(color: Colors.white),
+                        ),
                       ),
                     ),
                   ),
