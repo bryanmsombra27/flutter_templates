@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:templates/widgets/project.dart';
 
 class ProjectsScreen extends StatelessWidget {
   const ProjectsScreen({super.key});
@@ -82,110 +83,138 @@ class ProjectsScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(10),
-        child: SingleChildScrollView(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(10),
           child: Column(
+            spacing: 20,
             mainAxisSize: MainAxisSize.min,
             children: [
               _SearchBar(colors: colors),
-              SizedBox(
-                height: height,
-                child: GridView.count(
-                  childAspectRatio: .4,
-                  crossAxisCount: 2,
-                  // 👈 Esto genera 2 columnas
-                  crossAxisSpacing: 10,
-                  mainAxisSpacing: 10,
-                  padding: const EdgeInsets.all(16),
-                  children: [
-                    Container(
-                      padding: EdgeInsets.all(20),
-                      decoration: BoxDecoration(
-                        color: Colors.orange.shade100,
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Today",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20,
-                            ),
-                          ),
-                          Text(
-                            "09:30 AM",
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.grey[600],
-                            ),
-                          ),
-                          Text(
-                            "Entrevista",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18,
-                            ),
-                          ),
+              GridView.count(
+                shrinkWrap: true,
 
-                          Divider(),
-                          Text(
-                            "09:30 AM",
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.grey[600],
-                            ),
-                          ),
-                          Text(
-                            "Reunion",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18,
-                            ),
-                          ),
-                          Divider(),
-                          Text(
-                            "09:30 AM",
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.grey[600],
-                            ),
-                          ),
-                          Text(
-                            "Aprender diseño",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18,
-                            ),
-                          ),
-                        ],
-                      ),
+                childAspectRatio: .4,
+                crossAxisCount: 2,
+                // 👈 Esto genera 2 columnas
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10,
+                padding: const EdgeInsets.all(16),
+                children: [
+                  Container(
+                    padding: EdgeInsets.all(20),
+                    decoration: BoxDecoration(
+                      color: Colors.orange.shade100,
+                      borderRadius: BorderRadius.circular(20),
                     ),
-                    Column(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        _projectCard(
-                          Icons.library_books_sharp,
-                          Colors.green.shade100,
-                          "20 pendientes",
-                          "Lista de pendientes",
+                        Text(
+                          "Today",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                          ),
                         ),
-                        _projectCard(
-                          Icons.access_time_rounded,
-                          Colors.purple.shade100,
-                          "20 pendientes",
-                          "En Progreso",
+                        Text(
+                          "09:30 AM",
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.grey[600],
+                          ),
+                        ),
+                        Text(
+                          "Entrevista",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                          ),
+                        ),
+
+                        Divider(),
+                        Text(
+                          "09:30 AM",
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.grey[600],
+                          ),
+                        ),
+                        Text(
+                          "Reunion",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                          ),
+                        ),
+                        Divider(),
+                        Text(
+                          "09:30 AM",
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.grey[600],
+                          ),
+                        ),
+                        Text(
+                          "Aprender diseño",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                          ),
                         ),
                       ],
                     ),
-                  ],
-                ),
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _projectCard(
+                        Icons.library_books_sharp,
+                        Colors.green.shade100,
+                        "20 pendientes",
+                        "Lista de pendientes",
+                      ),
+                      _projectCard(
+                        Icons.access_time_rounded,
+                        Colors.purple.shade100,
+                        "20 pendientes",
+                        "En Progreso",
+                      ),
+                    ],
+                  ),
+                ],
               ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  SizedBox(
+                    width: width * .6,
+                    child: ListTile(
+                      title: Text(
+                        "Proyectos",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                        ),
+                      ),
+                      subtitle: Text(
+                        "Actualmente tienes 5 proyectos activos",
+                        maxLines: 2,
+                        softWrap: true,
+                        style: TextStyle(fontSize: 16, color: Colors.grey[600]),
+                      ),
+                    ),
+                  ),
+
+                  TextButton(onPressed: () {}, child: Text("Ver todos")),
+                ],
+              ),
+
+              Project(secondColor: Colors.green),
+              Project(secondColor: Colors.purple),
             ],
           ),
         ),
