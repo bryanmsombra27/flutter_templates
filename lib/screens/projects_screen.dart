@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:templates/screens/index.dart';
 import 'package:templates/widgets/project.dart';
+import 'package:templates/widgets/search.dart';
 
 class ProjectsScreen extends StatelessWidget {
   const ProjectsScreen({super.key});
@@ -46,6 +47,36 @@ class ProjectsScreen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 204, 205, 211),
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.white70,
+        // surfaceTintColor: Colors.white,
+        child: Row(
+          spacing: 10,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            GestureDetector(
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (_) {
+                      return TodoListScreen();
+                    },
+                  ),
+                );
+              },
+              child: Icon(size: 35, Icons.home),
+            ),
+            Icon(size: 35, Icons.auto_graph),
+            CircleAvatar(
+              backgroundColor: Colors.blue,
+              radius: 30,
+              child: Icon(size: 35, Icons.add, color: Colors.white),
+            ),
+            Icon(size: 35, Icons.voice_chat_outlined),
+            Icon(size: 35, Icons.person),
+          ],
+        ),
+      ),
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 204, 205, 211),
         automaticallyImplyLeading: false,
@@ -90,7 +121,7 @@ class ProjectsScreen extends StatelessWidget {
             spacing: 20,
             mainAxisSize: MainAxisSize.min,
             children: [
-              _SearchBar(colors: colors),
+              CustomSearchBar(colors: colors),
               GridView.count(
                 shrinkWrap: true,
 
@@ -218,26 +249,6 @@ class ProjectsScreen extends StatelessWidget {
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-class _SearchBar extends StatelessWidget {
-  const _SearchBar({super.key, required this.colors});
-
-  final ColorScheme colors;
-
-  @override
-  Widget build(BuildContext context) {
-    return TextField(
-      decoration: InputDecoration(
-        filled: true,
-        prefixIcon: Icon(Icons.search),
-        prefixIconColor: colors.primary,
-        contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-        border: InputBorder.none,
-        hintText: "Encuentra tu projecto",
       ),
     );
   }
