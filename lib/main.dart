@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:templates/config/theme.dart';
+import 'package:templates/screens/index.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,11 +13,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      ),
-      home: Text("INITIAL TEMPLATE"),
+      themeMode: ThemeMode.light,
+      title: 'Shadow Bank',
+      theme: AppTheme().getTheme(),
+      home: Welcome(),
     );
   }
 }
