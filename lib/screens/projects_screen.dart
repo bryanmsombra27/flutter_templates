@@ -66,7 +66,18 @@ class ProjectsScreen extends StatelessWidget {
               },
               child: Icon(size: 35, Icons.home),
             ),
-            Icon(size: 35, Icons.auto_graph),
+            GestureDetector(
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (_) {
+                      return ProjectDetailScreen();
+                    },
+                  ),
+                );
+              },
+              child: Icon(size: 35, Icons.auto_graph),
+            ),
             CircleAvatar(
               backgroundColor: Colors.blue,
               radius: 30,
