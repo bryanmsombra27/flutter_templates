@@ -67,7 +67,7 @@ class SemiCircleProgressBar extends StatelessWidget {
     required this.progress,
     this.size = 200.0,
     this.backgroundColor = Colors.grey,
-    this.progressColor = Colors.blue,
+    this.progressColor = Colors.green,
     this.strokeWidth = 12,
   }) : super(key: key);
 

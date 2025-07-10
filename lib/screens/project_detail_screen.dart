@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:templates/widgets/graphic_tasls.dart';
 import 'package:templates/widgets/project_detail.dart';
 import 'package:templates/widgets/semichart.dart';
 
@@ -9,6 +10,9 @@ class ProjectDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double width = MediaQuery.sizeOf(context).width;
+    final double height = MediaQuery.sizeOf(context).height;
+
     return Scaffold(
       appBar: AppBar(
         title: Row(
@@ -16,50 +20,73 @@ class ProjectDetailScreen extends StatelessWidget {
           children: [Text("Project Detail"), Icon(Icons.edit)],
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(10),
-        child: Column(
-          spacing: 30,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _BoxContainer(child: ProjectDetails()),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(10),
+          child: Column(
+            spacing: 30,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _BoxContainer(child: ProjectDetails()),
 
-            _BoxContainer(
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    spacing: 10,
-                    children: [
-                      Text(
-                        "Actividades",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18,
-                        ),
-                      ),
-                      Container(
-                        padding: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                          color: Colors.green.shade100,
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Text(
-                          "Todos",
+              _BoxContainer(
+                child: Graphic_taks(height: height, width: width),
+              ),
+              _BoxContainer(
+                child: Column(
+                  spacing: 20,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Subtareas",
                           style: TextStyle(
-                            color: Colors.green.shade600,
                             fontWeight: FontWeight.bold,
+                            fontSize: 20,
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                  SemiCircleProgressBar(progress: .5),
-                ],
+                        Text(
+                          "Ver todas",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                          ),
+                        ),
+                      ],
+                    ),
+
+                    _TaskItem(),
+                    _TaskItem(),
+                    _TaskItem(),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
+      ),
+    );
+  }
+}
+
+class _TaskItem extends StatelessWidget {
+  const _TaskItem({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.grey.shade300,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      padding: EdgeInsets.all(10),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text("Entrevista 1", style: TextStyle(fontWeight: FontWeight.bold)),
+          Icon(Icons.check_circle, color: Colors.blue),
+        ],
       ),
     );
   }
