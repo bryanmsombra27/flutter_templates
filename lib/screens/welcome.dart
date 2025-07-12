@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:templates/screens/index.dart';
 
 class Welcome extends StatelessWidget {
   const Welcome({super.key});
@@ -59,7 +60,15 @@ class Welcome extends StatelessWidget {
               children: [
                 Expanded(
                   child: TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (_) {
+                            return Home();
+                          },
+                        ),
+                      );
+                    },
                     child: Text(
                       "Comienza Ahora",
                       style: TextStyle(color: Colors.white),
