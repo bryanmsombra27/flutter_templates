@@ -20,19 +20,25 @@ class _CarouselState extends State<Carousel> {
   @override
   Widget build(BuildContext context) {
     final double height = MediaQuery.sizeOf(context).height;
-    final double width = MediaQuery.sizeOf(context).width;
 
     return Column(
       children: [
         SizedBox(
           height: height / 2,
-          child: PageView(
-            onPageChanged: (index) {
-              setState(() {
-                _currentPage = index;
-              });
-            },
-            children: _pages,
+          child: Padding(
+            padding: const EdgeInsets.all(5),
+            child: ClipRRect(
+              borderRadius: BorderRadiusGeometry.circular(20),
+              child: PageView(
+                padEnds: true,
+                onPageChanged: (index) {
+                  setState(() {
+                    _currentPage = index;
+                  });
+                },
+                children: _pages,
+              ),
+            ),
           ),
         ),
         const SizedBox(height: 10),
