@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:templates/config/theme.dart';
+import 'package:templates/screens/welcome_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,10 +14,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      ),
-      home: Text("INITIAL TEMPLATE"),
+      theme: ThemeApp().theme(),
+      home: WelcomeScreen(),
     );
   }
 }
