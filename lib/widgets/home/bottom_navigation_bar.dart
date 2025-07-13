@@ -1,32 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:templates/store/navigation.dart';
 
-class CustomNavigationBar extends StatefulWidget {
+class CustomNavigationBar extends ConsumerStatefulWidget {
   const CustomNavigationBar({super.key});
 
   @override
-  State<CustomNavigationBar> createState() => _CustomNavigationBarState();
+  ConsumerState<CustomNavigationBar> createState() =>
+      _CustomNavigationBarState();
 }
 
-class _CustomNavigationBarState extends State<CustomNavigationBar> {
-  int currentIndex = 0;
-
+class _CustomNavigationBarState extends ConsumerState<CustomNavigationBar> {
   @override
   Widget build(BuildContext context) {
+    final int currentIndex = ref.watch(menuIndexProvider);
+    final menuProvider = ref.read(menuIndexProvider.notifier);
+
     return BottomNavigationBar(
       currentIndex: currentIndex,
       type: BottomNavigationBarType.fixed,
       onTap: (index) {
-        setState(() {
-          currentIndex = index;
-        });
+        menuProvider.changeIndex(index);
       },
-
       backgroundColor: Colors.blue, // color de fondo
       selectedItemColor: Colors.white, // color del ítem seleccionado
       unselectedItemColor: Colors.white60, // color de ítems no seleccionados
-      selectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
-      unselectedLabelStyle: TextStyle(fontWeight: FontWeight.normal),
-      items: [
+      selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
+      unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.normal),
+      items: const [
         BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
         BottomNavigationBarItem(
           icon: Icon(Icons.graphic_eq),

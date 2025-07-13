@@ -14,7 +14,6 @@ class Home extends StatelessWidget {
     final TextTheme textTheme = Theme.of(context).textTheme;
 
     return Scaffold(
-      bottomNavigationBar: CustomNavigationBar(),
       body: SingleChildScrollView(
         child: Column(
           children: [

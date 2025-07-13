@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:templates/screens/home_screen.dart';
 import 'package:templates/screens/index.dart';
 
 class Welcome extends StatelessWidget {
@@ -64,7 +65,7 @@ class Welcome extends StatelessWidget {
                       Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (_) {
-                            return Home();
+                            return HomeScreen();
                           },
                         ),
                       );
