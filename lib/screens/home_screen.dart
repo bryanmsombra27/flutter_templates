@@ -13,9 +13,9 @@ class HomeScreen extends ConsumerWidget {
   final List<Widget> screens = [
     Home(), // Placeholder for Home
     Stadistics(),
-    const Center(child: Text("QR Screen")), // Placeholder for QR
+    History(), // Placeholder for QR
     Wallet(),
-    const Center(child: Text("Profile Screen")), // Placeholder for Profile
+    Profile(), // Placeholder for Profile
   ];
 
   @override

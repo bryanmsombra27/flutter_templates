@@ -1,1 +1,1 @@
-const titles = ["Inicio", "Estadísticas", "QR", "Billetera", "Perfil"];
+const titles = ["Inicio", "Estadísticas", "History", "Billetera", "Perfil"];
