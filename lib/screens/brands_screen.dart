@@ -55,17 +55,15 @@ class BrandsScreen extends StatelessWidget {
                 child: Column(
                   spacing: 40,
                   children: [
-                    _BrandItem(colors: colors),
-                    _BrandItem(colors: colors),
-                    _BrandItem(colors: colors),
-                    _BrandItem(colors: colors),
-                    _BrandItem(colors: colors),
-                    _BrandItem(colors: colors),
-                    _BrandItem(colors: colors),
-                    _BrandItem(colors: colors),
-                    _BrandItem(colors: colors),
-                    _BrandItem(colors: colors),
-                    _BrandItem(colors: colors),
+                    _BrandItem(colors: colors, img: "pizza-res.png"),
+                    _BrandItem(colors: colors, img: "ham_res.png"),
+                    _BrandItem(colors: colors, img: "car-res.png"),
+                    _BrandItem(colors: colors, img: "pizza-res.png"),
+                    _BrandItem(colors: colors, img: "ham_res.png"),
+                    _BrandItem(colors: colors, img: "car-res.png"),
+                    _BrandItem(colors: colors, img: "pizza-res.png"),
+                    _BrandItem(colors: colors, img: "ham_res.png"),
+                    _BrandItem(colors: colors, img: "car-res.png"),
                   ],
                 ),
               ),
@@ -78,7 +76,9 @@ class BrandsScreen extends StatelessWidget {
 }
 
 class _BrandItem extends StatelessWidget {
-  const _BrandItem({super.key, required this.colors});
+  final String img;
+
+  const _BrandItem({super.key, required this.colors, required this.img});
 
   final ColorScheme colors;
 
@@ -98,13 +98,13 @@ class _BrandItem extends StatelessWidget {
         spacing: 15,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Image.asset("assets/logo.png", width: 100),
+          Image.asset("assets/$img", width: 100),
           Flexible(
             flex: 2,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("MC Donald's"),
+                Text("MC Pizzaria"),
                 Text("near by me"),
                 Row(
                   children: [

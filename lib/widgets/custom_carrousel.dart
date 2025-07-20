@@ -35,21 +35,23 @@ class _CustomCarrouselState extends State<CustomCarrousel> {
           controller: carouselController,
           children: [
             ClipRect(
-              child: Image.asset(fit: BoxFit.cover, "assets/cancha.png"),
-            ),
-            ClipRect(child: Image.asset(fit: BoxFit.cover, "assets/hero.png")),
-            ClipRect(child: Image.asset(fit: BoxFit.cover, "assets/logo.png")),
-            ClipRect(
-              child: Image.asset(fit: BoxFit.cover, "assets/cancha.png"),
+              child: Image.asset(
+                fit: BoxFit.cover,
+                "assets/comida_mexicana.jpg",
+              ),
             ),
             ClipRect(
-              child: Image.asset(fit: BoxFit.cover, "assets/cancha.png"),
+              child: Image.asset(
+                fit: BoxFit.cover,
+                "assets/comida_tailandesa.png",
+              ),
             ),
             ClipRect(
-              child: Image.asset(fit: BoxFit.cover, "assets/cancha.png"),
+              child: Image.asset(fit: BoxFit.cover, "assets/spagueti.jpg"),
             ),
+            ClipRect(child: Image.asset(fit: BoxFit.cover, "assets/pizza.png")),
             ClipRect(
-              child: Image.asset(fit: BoxFit.cover, "assets/cancha.png"),
+              child: Image.asset(fit: BoxFit.cover, "assets/hamburguesa.png"),
             ),
           ],
         ),

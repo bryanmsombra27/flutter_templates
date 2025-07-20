@@ -18,7 +18,7 @@ class BrandDetailsScreen extends StatelessWidget {
         children: [
           SizedBox(
             // width: width,
-            child: Image.asset("assets/logo.png", fit: BoxFit.cover),
+            child: Image.asset("assets/combo_pobre.jpg", fit: BoxFit.cover),
           ),
           Positioned(
             // ),
@@ -51,7 +51,7 @@ class BrandDetailsScreen extends StatelessWidget {
                       spacing: 20,
                       children: [
                         Image.asset(
-                          "assets/logo.png",
+                          "assets/ham_res.png",
                           width: 100,
                           fit: BoxFit.cover,
                         ),
@@ -61,7 +61,7 @@ class BrandDetailsScreen extends StatelessWidget {
                             spacing: 12,
                             children: [
                               Text(
-                                "Mac donalds",
+                                "Mac pizzaria",
                                 style: TextStyle(fontWeight: FontWeight.bold),
                               ),
                               Text("Comida rapida para llevar"),

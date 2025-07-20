@@ -28,9 +28,27 @@ class HomeMostPopular extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           child: Row(
             children: [
-              _CustomFoodCard(colors: colors),
-              _CustomFoodCard(colors: colors),
-              _CustomFoodCard(colors: colors),
+              _CustomFoodCard(
+                colors: colors,
+                img: "combo_burguer.jpg",
+                price: "40.99",
+                rate: 4.3,
+                title: "Combo Jumbo",
+              ),
+              _CustomFoodCard(
+                colors: colors,
+                img: "combo_medio.jpg",
+                price: "30.99",
+                rate: 4.3,
+                title: "Combo King",
+              ),
+              _CustomFoodCard(
+                colors: colors,
+                img: "combo_pobre.jpg",
+                price: "10.99",
+                rate: 4.3,
+                title: "Combo Paquete Alcance",
+              ),
             ],
           ),
         ),
@@ -40,7 +58,18 @@ class HomeMostPopular extends StatelessWidget {
 }
 
 class _CustomFoodCard extends StatelessWidget {
-  const _CustomFoodCard({super.key, required this.colors});
+  final String img;
+  final String title;
+  final String price;
+  final double rate;
+  const _CustomFoodCard({
+    super.key,
+    required this.colors,
+    required this.img,
+    required this.title,
+    required this.price,
+    required this.rate,
+  });
 
   final ColorScheme colors;
 
@@ -57,7 +86,7 @@ class _CustomFoodCard extends StatelessWidget {
               topRight: Radius.circular(12),
             ),
             child: Image.asset(
-              "assets/cancha.png",
+              "assets/$img",
               fit: BoxFit.cover,
               width: 300,
               height: 200,
@@ -65,7 +94,7 @@ class _CustomFoodCard extends StatelessWidget {
           ),
 
           Text(
-            "Papas fritas",
+            title,
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
           Container(
@@ -89,14 +118,14 @@ class _CustomFoodCard extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  "\$ 7.56 ",
+                  "\$$price ",
                   style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                   textAlign: TextAlign.center,
                 ),
                 Row(
                   children: [
                     Icon(Icons.star, color: colors.primary),
-                    Text("4.3", style: TextStyle(color: colors.primary)),
+                    Text("$rate", style: TextStyle(color: colors.primary)),
                   ],
                 ),
               ],

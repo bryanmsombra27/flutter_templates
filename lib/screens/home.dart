@@ -13,6 +13,7 @@ class Home extends StatelessWidget {
       child: Column(
         children: [
           TextField(
+            autofocus: false,
             decoration: InputDecoration(
               border: OutlineInputBorder(gapPadding: 12),
 
