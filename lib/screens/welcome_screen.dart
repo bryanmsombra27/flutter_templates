@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:templates/store/carousel_store.dart';
 import 'package:templates/widgets/carousel.dart';
+import 'package:templates/widgets/widget_dot.dart';
+import "package:templates/store/images.dart";
 
-class WelcomeScreen extends StatelessWidget {
+class WelcomeScreen extends ConsumerWidget {
   const WelcomeScreen({super.key});
 
   static const name = "welcome_screen";
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final double height = MediaQuery.sizeOf(context).height;
     final TextTheme textTheme = Theme.of(context).textTheme;
     final colors = Theme.of(context).colorScheme;
+    final current_page = ref.watch(carouselStateProvider);
+
     return Scaffold(
       body: Stack(
         children: [
@@ -19,7 +25,7 @@ class WelcomeScreen extends StatelessWidget {
             bottom: 0,
             right: 0,
             left: 0,
-            top: height * .6,
+            top: height * .55,
             child: Container(
               padding: EdgeInsets.all(20),
               decoration: BoxDecoration(
@@ -29,6 +35,17 @@ class WelcomeScreen extends StatelessWidget {
               child: Column(
                 spacing: 10,
                 children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: List.generate(
+                      sliderPages.length,
+                      (index) => Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        child: Dot(isActive: index == current_page),
+                      ),
+                    ),
+                  ),
+
                   Text(
                     "Forma sencilla de reservar restaurantes",
                     maxLines: 3,
