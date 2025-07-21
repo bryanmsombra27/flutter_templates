@@ -19,41 +19,62 @@ class _CarouselState extends State<Carousel> {
 
   @override
   Widget build(BuildContext context) {
-    final double height = MediaQuery.sizeOf(context).height;
-
     return Column(
       children: [
-        SizedBox(
-          height: height / 2,
-          child: Padding(
-            padding: const EdgeInsets.all(5),
-            child: ClipRRect(
-              borderRadius: BorderRadiusGeometry.circular(20),
-              child: PageView(
-                padEnds: true,
-                onPageChanged: (index) {
-                  setState(() {
-                    _currentPage = index;
-                  });
-                },
-                children: _pages,
-              ),
-            ),
+        Expanded(
+          child: PageView(
+            padEnds: true,
+            onPageChanged: (index) {
+              setState(() {
+                _currentPage = index;
+              });
+            },
+            children: _pages,
           ),
         ),
-        const SizedBox(height: 10),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: List.generate(
-            _pages.length,
-            (index) => Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: _Dot(isActive: index == _currentPage),
-            ),
-          ),
-        ),
+        // Row(
+        //   mainAxisAlignment: MainAxisAlignment.center,
+        //   children: List.generate(
+        //     _pages.length,
+        //     (index) => Padding(
+        //       padding: const EdgeInsets.symmetric(horizontal: 10),
+        //       child: _Dot(isActive: index == _currentPage),
+        //     ),
+        //   ),
+        // ),
       ],
     );
+
+    // return LayoutBuilder(
+    //   builder: (_, constraints) {
+    //     return Column(
+    //       children: [
+    //         Expanded(
+    //           child: PageView(
+    //             padEnds: true,
+    //             onPageChanged: (index) {
+    //               setState(() {
+    //                 _currentPage = index;
+    //               });
+    //             },
+    //             children: _pages,
+    //           ),
+    //         ),
+    //         // const SizedBox(height: 10),
+    //         // Row(
+    //         //   mainAxisAlignment: MainAxisAlignment.center,
+    //         //   children: List.generate(
+    //         //     _pages.length,
+    //         //     (index) => Padding(
+    //         //       padding: const EdgeInsets.symmetric(horizontal: 10),
+    //         //       child: _Dot(isActive: index == _currentPage),
+    //         //     ),
+    //         //   ),
+    //         // ),
+    //       ],
+    //     );
+    //   },
+    // );
   }
 }
 
@@ -65,8 +86,8 @@ class _Dot extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 20,
-      height: 20,
+      width: isActive ? 90 : 10,
+      height: 10,
       decoration: BoxDecoration(
         color: isActive ? Theme.of(context).primaryColor : Colors.grey,
         borderRadius: BorderRadius.circular(100),
