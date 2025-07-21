@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:templates/widgets/restaurant_card.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -54,6 +55,25 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
           ),
+        ),
+      ),
+
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            RestaurantCard(
+              img: "assets/slider-1.jpg",
+              location: "kosovo",
+              price: "250",
+              title: "Puente de la Paz Mental",
+            ),
+            RestaurantCard(
+              img: "assets/slider-2.jpg",
+              location: "Argelia",
+              price: "350",
+              title: "Rincon de la Paz",
+            ),
+          ],
         ),
       ),
     );
