@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:templates/screens/home_screen.dart';
 import 'package:templates/store/carousel_store.dart';
 import 'package:templates/widgets/carousel.dart';
 import 'package:templates/widgets/widget_dot.dart';
@@ -72,7 +73,15 @@ class WelcomeScreen extends ConsumerWidget {
                       ),
 
                       TextButton.icon(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (_) {
+                                return HomeScreen();
+                              },
+                            ),
+                          );
+                        },
                         iconAlignment: IconAlignment.end,
                         label: Text(
                           "Continuar",
