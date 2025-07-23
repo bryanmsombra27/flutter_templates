@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:templates/screens/home_screen.dart';
-import 'package:templates/screens/order_detail_screen.dart';
+import 'package:templates/screens/orders.dart';
 
 class LayoutScreen extends StatelessWidget {
   const LayoutScreen({super.key});
@@ -29,7 +28,7 @@ class LayoutScreen extends StatelessWidget {
         ),
       ),
 
-      body: OrderDetailScreen(),
+      body: Orders(),
 
       bottomNavigationBar: Container(
         padding: EdgeInsets.all(10),
