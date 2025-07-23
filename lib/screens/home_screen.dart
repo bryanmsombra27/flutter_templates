@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:templates/widgets/wallet.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -8,7 +9,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
-    final double height = MediaQuery.sizeOf(context).height;
+
     return Padding(
       padding: const EdgeInsets.all(20),
       child: Column(
@@ -23,85 +24,38 @@ class HomeScreen extends StatelessWidget {
               Switch(value: true, onChanged: (v) {}),
             ],
           ),
-          Container(
-            margin: EdgeInsets.only(top: 30),
-            width: double.infinity,
-            height: height * .25,
-            decoration: BoxDecoration(
-              color: colors.primary,
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: Column(
-              children: [
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  spacing: 20,
-                  children: [
-                    Icon(
-                      Icons.account_balance_wallet_outlined,
-                      size: 120,
-                      color: Colors.white,
-                    ),
-                    Column(
-                      spacing: 20,
-                      children: [
-                        SizedBox(height: 1),
-                        Text(
-                          "Hoy",
-                          style: TextStyle(color: Colors.white, fontSize: 20),
-                        ),
-                        Text(
-                          "\$250",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
 
-                Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Column(
-                        children: [
-                          Text(
-                            "Esta semana",
-                            style: TextStyle(color: Colors.white, fontSize: 14),
-                          ),
-                          Text(
-                            "\$0",
-                            style: TextStyle(color: Colors.white, fontSize: 20),
-                          ),
-                        ],
-                      ),
-                      Text(
-                        "|",
-                        style: TextStyle(color: Colors.white, fontSize: 40),
-                      ),
-
-                      Column(
-                        children: [
-                          Text(
-                            "Ganancias Mensuales",
-                            style: TextStyle(color: Colors.white, fontSize: 14),
-                          ),
-                          Text(
-                            "\$250",
-                            style: TextStyle(color: Colors.white, fontSize: 20),
-                          ),
-                        ],
-                      ),
-                    ],
+          Wallet(
+            title: "Hoy",
+            quantity: 250,
+            children: [
+              Column(
+                children: [
+                  Text(
+                    "Esta semana",
+                    style: TextStyle(color: Colors.white, fontSize: 14),
                   ),
-                ),
-              ],
-            ),
+                  Text(
+                    "\$0",
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                ],
+              ),
+              Text("|", style: TextStyle(color: Colors.white, fontSize: 40)),
+
+              Column(
+                children: [
+                  Text(
+                    "Ganancias Mensuales",
+                    style: TextStyle(color: Colors.white, fontSize: 14),
+                  ),
+                  Text(
+                    "\$250",
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                ],
+              ),
+            ],
           ),
 
           SizedBox(height: 20),
