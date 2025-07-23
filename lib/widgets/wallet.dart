@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:templates/store/wallet_store.dart';
 
-class Wallet extends StatelessWidget {
+class Wallet extends ConsumerWidget {
   final String title;
   final double quantity;
   final List<Widget> children;
@@ -15,16 +17,18 @@ class Wallet extends StatelessWidget {
   static const name = "wallet";
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ref) {
     final double height = MediaQuery.sizeOf(context).height;
     final colors = Theme.of(context).colorScheme;
+
+    final isActive = ref.watch(walletStoreProvider);
 
     return Container(
       margin: EdgeInsets.only(top: 20),
       width: double.infinity,
       height: height * .25,
       decoration: BoxDecoration(
-        color: colors.primary,
+        color: isActive ? colors.primary : Colors.grey,
         borderRadius: BorderRadius.circular(20),
       ),
       child: Column(

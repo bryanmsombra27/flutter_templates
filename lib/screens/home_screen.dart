@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:templates/store/wallet_store.dart';
 import 'package:templates/widgets/wallet.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
 
   static const name = "home_screen";
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ref) {
     final colors = Theme.of(context).colorScheme;
+
+    final value = ref.watch(walletStoreProvider);
+    final toggleState = ref.read(walletStoreProvider.notifier).toggleState;
 
     return Padding(
       padding: const EdgeInsets.all(20),
@@ -21,7 +26,12 @@ class HomeScreen extends StatelessWidget {
                 "Desactivar wallet",
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
               ),
-              Switch(value: true, onChanged: (v) {}),
+              Switch(
+                value: value,
+                onChanged: (v) {
+                  toggleState();
+                },
+              ),
             ],
           ),
 

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:templates/screens/register_screen.dart';
 import 'package:templates/theme/theme.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(ProviderScope(child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Shadow Delivery History',
       theme: ThemeApp.getTheme(),
-      home: Scaffold(resizeToAvoidBottomInset: false, body: RegisterScreen()),
+      home: Scaffold(body: RegisterScreen()),
     );
   }
 }
