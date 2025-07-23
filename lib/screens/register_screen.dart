@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:templates/screens/layout_screen.dart';
 
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({super.key});
@@ -70,7 +71,15 @@ class RegisterScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (c) {
+                      return LayoutScreen();
+                    },
+                  ),
+                );
+              },
               child: Text(
                 "Registrarse",
                 style: TextStyle(color: Colors.white, fontSize: 18),
