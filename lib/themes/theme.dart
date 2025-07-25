@@ -17,6 +17,10 @@ class ThemeApp {
           fontSize: 24,
           fontWeight: FontWeight.bold,
         ),
+        titleSmall: GoogleFonts.robotoCondensed(
+          fontSize: 20,
+          fontWeight: FontWeight.w500,
+        ),
 
         bodySmall: GoogleFonts.abrilFatface(
           textStyle: TextStyle(
@@ -25,8 +29,12 @@ class ThemeApp {
             color: Colors.grey.shade600,
           ),
         ),
-        bodyMedium: GoogleFonts.aBeeZee(
-          textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.w300),
+        bodyMedium: GoogleFonts.robotoCondensed(
+          textStyle: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w400,
+            color: color.shade400,
+          ),
         ),
       ),
     );
