@@ -22,10 +22,10 @@ class ThemeApp {
           fontWeight: FontWeight.w500,
         ),
 
-        bodySmall: GoogleFonts.abrilFatface(
+        bodySmall: GoogleFonts.robotoCondensed(
           textStyle: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.w300,
+            fontSize: 16,
+            fontWeight: FontWeight.w500,
             color: Colors.grey.shade600,
           ),
         ),

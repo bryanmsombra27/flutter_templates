@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:templates/data/products.dart';
 import 'package:templates/themes/theme.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:templates/widgets/custom_floating_button.dart';
 import 'package:templates/widgets/product_card.dart';
 
 void main() {
@@ -31,11 +32,7 @@ class _Home extends StatelessWidget {
     final TextTheme textTheme = Theme.of(context).textTheme;
 
     return Scaffold(
-      floatingActionButton: CircleAvatar(
-        maxRadius: 30,
-        backgroundColor: colors.inversePrimary,
-        child: Icon(Icons.shopping_cart, size: 30),
-      ),
+      floatingActionButton: CustomFloatingButton(),
       body: SingleChildScrollView(
         child: SafeArea(
           child: Padding(
@@ -87,21 +84,25 @@ class _Home extends StatelessWidget {
                         img: "assets/zapatillas-deportivas.jpg",
                         title: "Tennis Deportivos Groove Street",
                         price: 350,
+                        tag: "tenis-1",
                       ),
                       ProductCard(
                         img: "assets/zapatillas-deportivas-2.jpg",
                         title: "Tennis Deportivos 4 Life",
                         price: 200,
+                        tag: "tenis-2",
                       ),
                       ProductCard(
                         img: "assets/traje.jpg",
                         title: "Traje Corporativo",
                         price: 150,
+                        tag: "traje-1",
                       ),
                       ProductCard(
                         img: "assets/traje-2.jpg",
                         title: "Saco de trabajo",
                         price: 100,
+                        tag: "traje-2",
                       ),
                     ],
                   ),
