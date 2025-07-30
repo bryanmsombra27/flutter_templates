@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import "package:templates/widgets/customcard.dart";
+import "../widgets/search.dart";
+import "../widgets/title.dart";
+import "../widgets/brands.dart";
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -7,86 +11,40 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colors = Theme.of(context).colorScheme;
-    final double width = MediaQuery.sizeOf(context).width;
-
     return Scaffold(
       body: SafeArea(
-        child: Column(
-          children: [
-            Container(
-              padding: EdgeInsets.only(top: 20),
-              decoration: BoxDecoration(
-                color: colors.primary,
-                borderRadius: BorderRadiusGeometry.circular(10),
-              ),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.location_on,
-                            color: Colors.white,
-                            size: 40,
-                          ),
-                          Text(
-                            "Acapulco, Mexico",
-                            style: TextStyle(color: Colors.white, fontSize: 22),
-                          ),
-                        ],
-                      ),
-                      Container(
-                        padding: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                          color: const Color.fromARGB(230, 165, 161, 161),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(10),
+            child: Column(
+              spacing: 10,
+              children: [
+                Search(),
+                CustomTitle(title: "Marcas", label: "Ver más"),
+                Brands(),
+                CustomTitle(title: "Más solicitados", label: "Ver más"),
+                Customcard(
+                  img: "assets/camioneta-azul-2.jpg",
+                  title: "Truck Escanor 2025",
+                  price: "150",
+                ),
+                SizedBox(height: 20),
 
-                        child: Icon(Icons.notifications, color: Colors.white),
-                      ),
-                    ],
-                  ),
-                  Container(
-                    margin: EdgeInsets.symmetric(vertical: 40),
-                    child: Row(
-                      spacing: 30,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        TextField(
-                          decoration: InputDecoration(
-                            fillColor: Colors.white,
-                            filled: true,
-                            prefixIcon: Icon(
-                              Icons.search,
-                              size: 40,
-                              color: colors.primary,
-                            ),
-                            hintText: "Buscar...",
-                            border: OutlineInputBorder(),
-                            constraints: BoxConstraints(maxWidth: width * .7),
-                          ),
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.white,
-                          ),
-                          child: Icon(
-                            size: 40,
-                            Icons.compare_arrows_outlined,
-                            color: colors.primary,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
+                Customcard(
+                  img: "assets/camioneta-azul-3.jpg",
+                  title: "Truck Uchiha 2024",
+                  price: "250",
+                ),
+                SizedBox(height: 20),
+                Customcard(
+                  img: "assets/camioneta-azul-4.jpg",
+                  title: "Truck Uzumaki 2023",
+                  price: "350",
+                ),
+                SizedBox(height: 20),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );
