@@ -22,14 +22,23 @@ class HeaderPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = Colors.cyanAccent
+      ..color =
+          Color(0xFF00BDBD) // color turquesa
       ..style = PaintingStyle.fill;
+
     final path = Path();
 
-    path.lineTo(0, 0);
-    path.lineTo(0, size.height * .9);
-    path.lineTo(size.width, size.height * .9);
+    // Dibujar el fondo con esquinas inferiores redondeadas
+    path.moveTo(0, 0);
+    path.lineTo(0, size.height - 30);
+    path.quadraticBezierTo(
+      size.width / 50,
+      size.height - 90,
+      size.width,
+      size.height - 30,
+    );
     path.lineTo(size.width, 0);
+    path.close();
 
     canvas.drawPath(path, paint);
   }
