@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
+        colorScheme: ColorScheme.fromSeed(seedColor: Color(0xFF1A1E3B)),
       ),
       home: Scaffold(
         body: SafeArea(
@@ -30,23 +30,9 @@ class MyApp extends StatelessWidget {
                 child: Column(
                   spacing: 30,
                   children: [
-                    Container(
-                      margin: EdgeInsets.only(top: 10),
-                      width: width * .95,
-                      padding: EdgeInsets.all(20),
-                      decoration: BoxDecoration(
-                        color: Colors.green,
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(50),
-                          bottomLeft: Radius.circular(50),
-                        ),
-                      ),
-                      child: Row(
-                        children: [
-                          Icon(Icons.fireplace),
-                          Text("Shadow Barber Shop"),
-                        ],
-                      ),
+                    CircleAvatar(
+                      radius: 120,
+                      backgroundImage: AssetImage("assets/logo.jpg"),
                     ),
 
                     CustomBanner(),
