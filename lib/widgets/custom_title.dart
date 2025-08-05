@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class CustomTitle extends StatelessWidget {
-  const CustomTitle({super.key});
+  final String title;
+
+  const CustomTitle({super.key, required this.title});
 
   static const name = "custom_title";
 
@@ -11,6 +13,7 @@ class CustomTitle extends StatelessWidget {
     final colors = Theme.of(context).colorScheme;
 
     return Column(
+      spacing: 20,
       children: [
         SizedBox(
           width: width * .9,
@@ -18,7 +21,7 @@ class CustomTitle extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "Barbería",
+                title,
                 style: TextStyle(
                   color: colors.primary,
                   fontWeight: FontWeight.bold,

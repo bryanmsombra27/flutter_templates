@@ -52,12 +52,55 @@ class MyApp extends StatelessWidget {
                     CustomBanner(),
 
                     GenderToggle(),
-                    CustomTitle(),
+                    CustomTitle(title: "Barbería"),
                     SingleChildScrollView(
+                      padding: EdgeInsets.all(15),
                       scrollDirection: Axis.horizontal,
                       child: Row(
                         spacing: 30,
-                        children: [CustomCard(), CustomCard()],
+                        children: [
+                          CustomCard(
+                            description: "Renueva tu corte de cabello",
+                            label: "corte de cabello",
+                            title: "Corte de cabello",
+                            price: "150",
+                            img: "banner.jpg",
+                          ),
+                          CustomCard(
+                            description: "Personaliza tu barba como quieras",
+                            label: "barba",
+                            title: "Cuidado y Estilo personal",
+                            price: "350",
+                            img: "corte_barba.jpg",
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    CustomTitle(title: "Estilismo"),
+
+                    SingleChildScrollView(
+                      padding: EdgeInsets.all(15),
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        spacing: 30,
+                        children: [
+                          CustomCard(
+                            description:
+                                "Prueba con peinados unicos y detergentes",
+                            label: "peinados",
+                            title: "Peinados Únicos",
+                            price: "400",
+                            img: "cuidado_cabello.jpg",
+                          ),
+                          CustomCard(
+                            description: "Personaliza tu estilo como quieras",
+                            label: "alisado y descuentos",
+                            title: "Cambia tu estilo",
+                            price: "350",
+                            img: "cuidado_cabello2.jpg",
+                          ),
+                        ],
                       ),
                     ),
                   ],
