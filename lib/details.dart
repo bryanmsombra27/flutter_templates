@@ -35,129 +35,135 @@ class Details extends StatelessWidget {
             right: 10,
             left: 10,
             child: Container(
+              height: height * .6,
               padding: EdgeInsets.all(20),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20),
               ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                spacing: 20,
-                children: [
-                  Text(
-                    title,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 25, color: Colors.black),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        spacing: 10,
-                        children: [
-                          Icon(
-                            Icons.supervised_user_circle_rounded,
-                            size: 30,
-                            color: colors.primary,
-                          ),
-                          Text("Barbero Jhon Doe"),
-                        ],
-                      ),
-                      Row(
-                        spacing: 5,
-                        children: [
-                          Icon(
-                            Icons.location_on,
-                            size: 30,
-                            color: colors.primary,
-                          ),
-                          Icon(
-                            Icons.wechat_sharp,
-                            size: 30,
-                            color: colors.primary,
-                          ),
-                          Icon(Icons.search, size: 30, color: colors.primary),
-                        ],
-                      ),
-                    ],
-                  ),
-
-                  Text(description),
-                  Text(
-                    "Jueves 06 de agosto de 2025",
-                    style: TextStyle(
-                      color: colors.primary,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16,
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  spacing: 20,
+                  children: [
+                    Text(
+                      title,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 25, color: Colors.black),
                     ),
-                  ),
-                  Divider(color: colors.primary),
-
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      spacing: 20,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        _Schedule(day: "Lunes", number: 4, isActive: true),
-                        _Schedule(day: "Martes", number: 5, isSchedule: true),
-                        _Schedule(
-                          day: "Miercoles",
-                          number: 6,
-                          isSchedule: true,
+                        Row(
+                          spacing: 10,
+                          children: [
+                            Icon(
+                              Icons.supervised_user_circle_rounded,
+                              size: 30,
+                              color: colors.primary,
+                            ),
+                            Text("Barbero Jhon Doe"),
+                          ],
                         ),
-                        _Schedule(day: "Jueves", number: 7),
-                        _Schedule(day: "Viernes", number: 8),
-                        _Schedule(day: "Sabado", number: 9),
-                        _Schedule(day: "Domingo", number: 10),
+                        Row(
+                          spacing: 5,
+                          children: [
+                            Icon(
+                              Icons.location_on,
+                              size: 30,
+                              color: colors.primary,
+                            ),
+                            Icon(
+                              Icons.wechat_sharp,
+                              size: 30,
+                              color: colors.primary,
+                            ),
+                            Icon(Icons.search, size: 30, color: colors.primary),
+                          ],
+                        ),
                       ],
                     ),
-                  ),
 
-                  Center(
-                    child: SizedBox(
-                      width: width * .9,
-                      height: height * .25,
-                      child: GridView(
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          crossAxisSpacing: 20,
-                          mainAxisSpacing: 20,
-                          childAspectRatio: 2.5,
-                        ),
+                    Text(description),
+                    Text(
+                      "Jueves 06 de agosto de 2025",
+                      style: TextStyle(
+                        color: colors.primary,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    ),
+                    Divider(color: colors.primary),
 
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        spacing: 20,
                         children: [
-                          _Hour(
-                            colors: colors,
-                            turn: "07:00 - 09:00",
-                            isActive: true,
+                          _Schedule(day: "Lunes", number: 4, isActive: true),
+                          _Schedule(day: "Martes", number: 5, isSchedule: true),
+                          _Schedule(
+                            day: "Miercoles",
+                            number: 6,
+                            isSchedule: true,
                           ),
-                          _Hour(colors: colors, turn: "09:00 - 11:00"),
-                          _Hour(colors: colors, turn: "11:00 - 13:00"),
-                          _Hour(colors: colors, turn: "13:00 - 15:00"),
+                          _Schedule(day: "Jueves", number: 7),
+                          _Schedule(day: "Viernes", number: 8),
+                          _Schedule(day: "Sabado", number: 9),
+                          _Schedule(day: "Domingo", number: 10),
                         ],
                       ),
                     ),
-                  ),
 
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * .8,
-                    child: TextButton(
-                      style: ButtonStyle(
-                        backgroundColor: WidgetStatePropertyAll(colors.primary),
-                        shape: WidgetStatePropertyAll(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadiusGeometry.circular(10),
-                          ),
+                    Center(
+                      child: SizedBox(
+                        width: width * .9,
+                        height: height * .25,
+                        child: GridView(
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2,
+                                crossAxisSpacing: 20,
+                                mainAxisSpacing: 20,
+                                childAspectRatio: 2.5,
+                              ),
+
+                          children: [
+                            _Hour(
+                              colors: colors,
+                              turn: "07:00 - 09:00",
+                              isActive: true,
+                            ),
+                            _Hour(colors: colors, turn: "09:00 - 11:00"),
+                            _Hour(colors: colors, turn: "11:00 - 13:00"),
+                            _Hour(colors: colors, turn: "13:00 - 15:00"),
+                          ],
                         ),
                       ),
-                      onPressed: () {},
-                      child: Text(
-                        "Agendar cita",
-                        style: TextStyle(color: Colors.white),
+                    ),
+
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * .8,
+                      child: TextButton(
+                        style: ButtonStyle(
+                          backgroundColor: WidgetStatePropertyAll(
+                            colors.primary,
+                          ),
+                          shape: WidgetStatePropertyAll(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadiusGeometry.circular(10),
+                            ),
+                          ),
+                        ),
+                        onPressed: () {},
+                        child: Text(
+                          "Agendar cita",
+                          style: TextStyle(color: Colors.white),
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
