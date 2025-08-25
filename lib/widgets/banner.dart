@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:templates/store/index_store.dart';
 
-class CustomBanner extends StatelessWidget {
+class CustomBanner extends ConsumerWidget {
   final Color color;
   final String title;
   final String content;
@@ -15,8 +17,9 @@ class CustomBanner extends StatelessWidget {
   static const name = "banner";
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ref) {
     final double width = MediaQuery.sizeOf(context).width;
+    final changePhrase = ref.read(indexStoreProvider.notifier).changeIndex;
 
     return Center(
       child: Container(
@@ -51,7 +54,12 @@ class CustomBanner extends StatelessWidget {
                     fontSize: 22,
                   ),
                 ),
-                Icon(Icons.refresh, color: Colors.white, size: 30),
+                GestureDetector(
+                  onTap: () {
+                    changePhrase();
+                  },
+                  child: Icon(Icons.refresh, color: Colors.white, size: 30),
+                ),
               ],
             ),
 

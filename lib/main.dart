@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:templates/screens/jokes.dart';
 import 'package:templates/screens/roast.dart';
-import 'package:templates/widgets/banner.dart';
-import 'package:templates/widgets/category_card.dart';
-import 'package:templates/widgets/info.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(ProviderScope(child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {

@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:templates/data/satiras.dart';
+import 'package:templates/store/index_store.dart';
 import 'package:templates/widgets/banner.dart';
 import 'package:templates/widgets/category_card.dart';
 import 'package:templates/widgets/info.dart';
 
-class Roast extends StatelessWidget {
+class Roast extends ConsumerWidget {
   const Roast({super.key});
 
   static const name = "roast";
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ref) {
+    final index = ref.watch(indexStoreProvider);
+
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -21,7 +26,7 @@ class Roast extends StatelessWidget {
             CustomBanner(
               color: Colors.orange,
               title: "Satira del dia",
-              content: "Eres como el WiFi… a veces desapareces.",
+              content: satiras[index],
             ),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
