@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:templates/store/index_store.dart';
+import 'package:templates/store/animate_coordination.dart';
+import 'package:templates/widgets/rotate_icon.dart';
 
-class CustomBanner extends ConsumerWidget {
+class CustomBanner extends StatelessWidget {
   final Color color;
   final String title;
   final String content;
@@ -17,9 +18,8 @@ class CustomBanner extends ConsumerWidget {
   static const name = "banner";
 
   @override
-  Widget build(BuildContext context, ref) {
+  Widget build(BuildContext context) {
     final double width = MediaQuery.sizeOf(context).width;
-    final changePhrase = ref.read(indexStoreProvider.notifier).changeIndex;
 
     return Center(
       child: Container(
@@ -54,25 +54,11 @@ class CustomBanner extends ConsumerWidget {
                     fontSize: 22,
                   ),
                 ),
-                GestureDetector(
-                  onTap: () {
-                    changePhrase();
-                  },
-                  child: Icon(Icons.refresh, color: Colors.white, size: 30),
-                ),
+                RotatingIconButton(),
               ],
             ),
 
-            Text(
-              content,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-                fontStyle: FontStyle.italic,
-              ),
-            ),
+            _FadeText(content: content),
 
             TextButton(
               onPressed: () {},
@@ -85,6 +71,71 @@ class CustomBanner extends ConsumerWidget {
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class _FadeText extends ConsumerStatefulWidget {
+  const _FadeText({super.key, required this.content});
+
+  final String content;
+
+  @override
+  ConsumerState<_FadeText> createState() => _FadeTextState();
+}
+
+class _FadeTextState extends ConsumerState<_FadeText>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 800),
+    );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // Escucha cambios en el trigger
+    final trigger = ref.watch(animateCoordinationProvider);
+
+    // Cada vez que cambie el trigger → ejecuta animación
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (trigger > 0) {
+        _controller.forward(from: 0);
+      }
+    });
+
+    return FadeTransition(
+      opacity: TweenSequence([
+        TweenSequenceItem(
+          tween: Tween(begin: 1.0, end: 0.0),
+          weight: 50,
+        ), // fade out
+        TweenSequenceItem(
+          tween: Tween(begin: 0.0, end: 1.0),
+          weight: 50,
+        ), // fade in
+      ]).animate(_controller),
+      child: Text(
+        widget.content,
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 18,
+          fontWeight: FontWeight.bold,
+          fontStyle: FontStyle.italic,
         ),
       ),
     );
