@@ -46,4 +46,14 @@ class FoodStore extends _$FoodStore {
       return item;
     }).toList();
   }
+
+  void removeFromCart(String id) {
+    state = state.map((item) {
+      if (item.id == id) {
+        return item.copyWith(wasAdded: false);
+      }
+
+      return item;
+    }).toList();
+  }
 }

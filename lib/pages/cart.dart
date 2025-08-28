@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:templates/data/food.dart';
 import 'package:templates/store/cart_store.dart';
+import 'package:templates/store/food_store.dart';
 import 'package:templates/widgets/food_list.dart';
 
 class Cart extends ConsumerWidget {
@@ -12,6 +13,8 @@ class Cart extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ref) {
     final cart = ref.watch(cartStoreProvider);
+    final removeFromCart = ref.read(cartStoreProvider.notifier).remove;
+    final wasRemoved = ref.read(foodStoreProvider.notifier).removeFromCart;
     final double height = MediaQuery.sizeOf(context).height;
 
     final total = cart.fold(0.0, (acc, item) => acc + item.qty * item.price);
@@ -29,7 +32,24 @@ class Cart extends ConsumerWidget {
               return Column(
                 children: [
                   SizedBox(height: 20),
-                  CartListItem(item: item),
+                  Dismissible(
+                    key: Key(item.id),
+                    direction: DismissDirection.endToStart,
+                    background: Container(
+                      color: Colors.red,
+                      alignment: Alignment.centerRight,
+                      padding: EdgeInsets.symmetric(horizontal: 20),
+                      child: Icon(Icons.delete, color: Colors.white),
+                    ),
+                    onDismissed: (direction) {
+                      removeFromCart(item.id);
+                      wasRemoved(item.id);
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text('${item.name} eliminado')),
+                      );
+                    },
+                    child: CartListItem(item: item),
+                  ),
                 ],
               );
             },
@@ -92,7 +112,7 @@ class CartListItem extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadiusGeometry.circular(20),
-            child: Image.asset("assets/${item.img}", width: 100),
+            child: Image.asset("assets/${item.img}", width: 150),
           ),
           Column(
             spacing: 10,
