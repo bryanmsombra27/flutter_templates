@@ -1,33 +1,75 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:templates/data/food.dart';
+import 'package:templates/pages/cart.dart';
 import 'package:templates/store/cart_store.dart';
 import 'package:templates/store/food_store.dart';
-import 'package:collection/collection.dart';
 
-class FoodList extends ConsumerWidget {
+class FoodList extends StatefulWidget {
   const FoodList({super.key});
 
   static const name = "food_list";
 
   @override
-  Widget build(BuildContext context, ref) {
-    final data = ref.watch(foodStoreProvider);
+  State<FoodList> createState() => _FoodListState();
+}
 
+class _FoodListState extends State<FoodList> {
+  List<Widget> pages = [_List(), Cart()];
+  int index = 0;
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: ListView.builder(
-            itemCount: data.length,
-            itemBuilder: (ctx, index) {
-              final food = data[index];
-
-              return FoodItem(food: food);
-            },
-          ),
+          child: IndexedStack(index: index, children: pages),
         ),
       ),
+
+      bottomNavigationBar: Container(
+        padding: EdgeInsets.all(20),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            GestureDetector(
+              onTap: () {
+                setState(() {
+                  index = 0;
+                });
+              },
+              child: Icon(Icons.home, size: 40),
+            ),
+            GestureDetector(
+              onTap: () {
+                setState(() {
+                  index = 1;
+                });
+              },
+              child: Icon(Icons.list, size: 40),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _List extends ConsumerWidget {
+  const _List({super.key});
+
+  @override
+  Widget build(BuildContext context, ref) {
+    final data = ref.watch(foodStoreProvider);
+
+    return ListView.builder(
+      itemCount: data.length,
+      itemBuilder: (ctx, index) {
+        final food = data[index];
+
+        return FoodItem(food: food);
+      },
     );
   }
 }
@@ -86,7 +128,7 @@ class FoodItem extends ConsumerWidget {
                       child: Icon(Icons.shopping_cart, size: 30),
                     ),
 
-                  if (food.wasAdded) _CartCounter(id: food.id),
+                  if (food.wasAdded) CartCounter(id: food.id),
                 ],
               ),
             ],
@@ -97,8 +139,8 @@ class FoodItem extends ConsumerWidget {
   }
 }
 
-class _CartCounter extends ConsumerWidget {
-  const _CartCounter({super.key, required this.id});
+class CartCounter extends ConsumerWidget {
+  const CartCounter({super.key, required this.id});
 
   final String id;
 
