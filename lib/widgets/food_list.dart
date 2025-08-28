@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:templates/data/food.dart';
+import 'package:templates/store/cart_store.dart';
 import 'package:templates/store/food_store.dart';
+import 'package:collection/collection.dart';
 
 class FoodList extends ConsumerWidget {
   const FoodList({super.key});
@@ -38,6 +40,7 @@ class FoodItem extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ref) {
     final addToCart = ref.read(foodStoreProvider.notifier).addToCart;
+    final addItem = ref.read(cartStoreProvider.notifier).add;
 
     return Column(
       children: [
@@ -78,24 +81,58 @@ class FoodItem extends ConsumerWidget {
                     GestureDetector(
                       onTap: () {
                         addToCart(food.id);
+                        // addItem(food.id);
                       },
                       child: Icon(Icons.shopping_cart, size: 30),
                     ),
 
-                  if (food.wasAdded)
-                    Row(
-                      spacing: 20,
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Icon(Icons.remove),
-                        Text("1"),
-                        Icon(Icons.add),
-                      ],
-                    ),
+                  if (food.wasAdded) _CartCounter(id: food.id),
                 ],
               ),
             ],
           ),
+        ),
+      ],
+    );
+  }
+}
+
+class _CartCounter extends ConsumerWidget {
+  const _CartCounter({super.key, required this.id});
+
+  final String id;
+
+  @override
+  Widget build(BuildContext context, ref) {
+    final addItem = ref.read(cartStoreProvider.notifier).add;
+    final decreaseItem = ref.read(cartStoreProvider.notifier).decreaseCart;
+    final cartItem = ref
+        .watch(cartStoreProvider)
+        .firstWhere(
+          (item) => id == item.id,
+          orElse: () => CartItem(id: id, qty: 1, name: '', img: '', price: 0),
+        );
+
+    return Row(
+      spacing: 20,
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        GestureDetector(
+          // onTap: cartItem != null && cartItem.qty > 1
+          onTap: cartItem.qty > 1
+              ? () {
+                  decreaseItem(id);
+                }
+              : null,
+          child: Icon(Icons.remove),
+        ),
+        // Text("${cartItem?.qty}"),
+        Text("${cartItem.qty}"),
+        GestureDetector(
+          onTap: () {
+            addItem(id);
+          },
+          child: Icon(Icons.add),
         ),
       ],
     );

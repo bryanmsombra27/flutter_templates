@@ -10,9 +10,6 @@ class CartStore extends _$CartStore {
   List<CartItem> build() => [];
 
   void add(String id) {
-    final data = ref.read(foodStoreProvider);
-
-    final food = data.firstWhere((p) => p.id == id);
     final bool wasAdded = state.any((p) => p.id == id);
 
     if (wasAdded) {
@@ -24,6 +21,9 @@ class CartStore extends _$CartStore {
         return item;
       }).toList();
     } else {
+      final data = ref.read(foodStoreProvider);
+      final food = data.firstWhere((p) => p.id == id);
+
       state = [
         ...state,
         CartItem(
