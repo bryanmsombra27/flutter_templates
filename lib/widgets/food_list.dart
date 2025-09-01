@@ -152,7 +152,7 @@ class CartCounter extends ConsumerWidget {
         .watch(cartStoreProvider)
         .firstWhere(
           (item) => id == item.id,
-          orElse: () => CartItem(id: id, qty: 1, name: '', img: '', price: 0),
+          orElse: () => CartItem(id: id, qty: 0, name: '', img: '', price: 0),
         );
 
     return Row(
