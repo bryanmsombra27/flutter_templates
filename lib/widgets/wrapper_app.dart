@@ -18,8 +18,9 @@ class WrapperAppState extends State<WrapperApp> {
     final colors = Theme.of(context).colorScheme;
 
     return Scaffold(
-      appBar: AppBar(title: Text("Shadow App")),
-      body: IndexedStack(index: index, children: pages),
+      body: SafeArea(
+        child: IndexedStack(index: index, children: pages),
+      ),
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: colors.primary,
         unselectedItemColor: colors.secondaryContainer,
@@ -38,13 +39,15 @@ class WrapperAppState extends State<WrapperApp> {
             label: "Filtros",
           ),
           BottomNavigationBarItem(
-            icon: Icon(FontAwesome.list_solid),
-            label: "Orden",
-          ),
-          BottomNavigationBarItem(
             icon: Icon(FontAwesome.phone_solid),
             label: "Llamadas",
           ),
+
+          BottomNavigationBarItem(
+            icon: Icon(FontAwesome.list_solid),
+            label: "Orden",
+          ),
+
           BottomNavigationBarItem(
             icon: Icon(FontAwesome.user),
             label: "Perfil",
