@@ -4,3 +4,4 @@ export "./custom_title.dart";
 export "./filter_option.dart";
 export "./custom_range_slider.dart";
 export "./call_buttons.dart";
+export "./cart_item.dart";
