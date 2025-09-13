@@ -459,6 +459,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.5.0"
+  ms_undraw:
+    dependency: "direct main"
+    description:
+      name: ms_undraw
+      sha256: "30324e7c28069fa29517f8828a5f6479b7b0e2e9315e944831efa5680227f380"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.1.1"
   node_preamble:
     dependency: transitive
     description:

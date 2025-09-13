@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:templates/pages/index.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +16,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: Text("INITIAL TEMPLATE"),
+      initialRoute: Home.name,
+      routes: {Home.name: (ctx) => Home()},
     );
   }
 }
